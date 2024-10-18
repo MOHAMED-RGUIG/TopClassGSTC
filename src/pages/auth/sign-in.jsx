@@ -120,7 +120,11 @@ style={{ backgroundColor: '#eef3ff',   border: 'none',
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
-               
+                {showPassword ? (
+                  <EyeSlashIcon className="h-5 w-5 text-gray-500" />
+                ) : (
+                  <EyeIcon className="h-5 w-5 text-gray-500" />
+                )}
               </div>
             </div>
           </div>
