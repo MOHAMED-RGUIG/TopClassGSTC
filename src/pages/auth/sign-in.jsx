@@ -121,9 +121,9 @@ style={{ backgroundColor: '#eef3ff',   border: 'none',
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
-                  <EyeSlashIcon className="h-5 w-5 text-gray-500" />
+                  <EyeSlashIcon className="h-5 w-5 mt-3 text-gray-500" />
                 ) : (
-                  <EyeIcon className="h-5 w-5 text-gray-500" />
+                  <EyeIcon className="h-5 w-5 mt-3 text-gray-500" />
                 )}
               </div>
             </div>
