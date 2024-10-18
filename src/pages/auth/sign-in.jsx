@@ -21,7 +21,7 @@ export function SignIn() {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('https://toptachesapi3.onrender.com/auth/login', {
@@ -39,55 +39,77 @@ export function SignIn() {
         };
         localStorage.setItem("currentUser", JSON.stringify(user));
         localStorage.setItem("loggedInUser", response.data.data.USR);
+        const userParams = encodeURIComponent(JSON.stringify(user));
+        
+       // window.location.href = `https://topclass1.vercel.app/?user=${userParams}`;
         // Redirect to dashboard
-        navigate('/dashboard/ACCUEIL');
+        navigate('/dashboard/home');
       }
     } catch (error) {
       setErrorMessage('Nom d\'utilisateur ou mot de passe incorrect');
     }
   };
 
+
   return (
-    <section className="m-8 flex gap-4">
+    <section className="m-8 font-poppins flex gap-4">
       <div className="w-full lg:w-3/5" style={{ marginTop: '50px' }}>
         <div className="text-center">
           <img 
-            src="/img/logo_footer.png" 
+            src="/img/Logo-Lavazza.jpg" 
             alt="Sign In" 
             className="mx-auto mb-4" 
-            style={{ maxWidth: '100%', height: 'auto' }} 
+            style={{ maxWidth: '100%', height: '250px' }} 
           />
           <Typography 
             variant="h3" 
             color="blue-gray" 
-            className="text-4xl font-bold animate-bounce mb-4">
+            className="text-4xl font-poppins font-bold mb-4">
             Bienvenu chez nous!
           </Typography>
         </div>
         <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleLogin}>
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+          <div className="mb-1 font-poppins flex flex-col gap-6">
+            {/* <Typography variant="small" color="blue-gray" className="-mb-3 font-poppins border-none">
               Nom d'utilisateur
-            </Typography>
+            </Typography> */}
             <Input
               size="lg"
-              placeholder="ex: jdoe"
-              className="rounded-lg !border-t-blue-gray-200 focus:!border-t-gray-900"
+              placeholder="NOM D'UTILISATEUR"
+style={{ backgroundColor: '#eef3ff',    border: 'none',
+    borderRadius: '25px',
+    color: '#000 !important',
+    fontFamily: 'poppins',
+    fontSize: '14px',
+    fontWeight: '600',
+    height: '60px',
+    marginBottom: '30px',
+    padding: '15px 25px'}}
+              className="rounded-lg font-poppins mb-5 p-[15px] px-[25px] font-semibold text-[14px] bg-custom-blue rounded-[50px] h-[60px] border-none"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+           { /*<Typography variant="small" color="blue-gray" className="-mb-3 font-poppins border-none">
               Mot de passe
-            </Typography>
+            </Typography> */} 
             <div className="relative">
               <Input
                 type={showPassword ? "text" : "password"}
                 size="lg"
-                placeholder="********"
-                className="rounded-lg !border-t-blue-gray-200 focus:!border-t-gray-900"
+style={{ backgroundColor: '#eef3ff',   border: 'none',
+    borderRadius: '25px',
+    color: '#000 !important',
+    fontFamily: 'poppins',
+    fontSize: '14px',
+    fontWeight: '600',
+    height: '60px',
+    marginBottom: '30px',
+    padding: '15px 25px'}}
+                placeholder="MOT DE PASS"
+                className="rounded-lg p-[15px] px-[25px] font-semibold text-[14px] bg-custom-blue rounded-[50px] h-[60px] font-poppins border-none"
                 labelProps={{
                   className: "before:content-none after:content-none",
                 }}
@@ -98,11 +120,7 @@ export function SignIn() {
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? (
-                  <EyeSlashIcon className="h-5 w-5 text-gray-500" />
-                ) : (
-                  <EyeIcon className="h-5 w-5 text-gray-500" />
-                )}
+               
               </div>
             </div>
           </div>
@@ -111,7 +129,7 @@ export function SignIn() {
               {errorMessage}
             </Typography>
           )}
-          <Button type="submit" className="mt-6 bg-[#1E3A8A] text-white rounded-lg" fullWidth>
+          <Button type="submit" className="mt-6 font-poppins bg-[#1b6cfc] text-white rounded-[50px] h-[60px]" fullWidth>
             Se connecter
           </Button>
         </form>
