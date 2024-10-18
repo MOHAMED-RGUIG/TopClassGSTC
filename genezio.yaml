@@ -5,7 +5,7 @@ frontend:
         deploy:
             - npm install --legacy-peer-deps
             - npm run build
-    subdomain: TopClassGSTC
-name: TopClassGSTC
+    subdomain: Topclassgstc
+name: Topclassgstc
 region: us-east-1
 yamlVersion: 2
