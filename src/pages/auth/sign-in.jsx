@@ -43,7 +43,7 @@ const handleLogin = async (e) => {
         
        // window.location.href = `https://topclass1.vercel.app/?user=${userParams}`;
         // Redirect to dashboard
-        navigate('/dashboard/home');
+        navigate('/dashboard/ACCUEIL');
       }
     } catch (error) {
       setErrorMessage('Nom d\'utilisateur ou mot de passe incorrect');
