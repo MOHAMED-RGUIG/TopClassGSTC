@@ -25,7 +25,7 @@ const Avatar = () => {
 
         {/* Première ligne : Image à gauche, Nom à droite */}
         <div className="flex items-center place-items-center">
-          <img src="/public/img/team-2.jpg" alt="Avatar" className="w-16 h-16 rounded-full" />
+          <img src="https://topclassgstc.app.genez.io/public/img/team-2.jpg" alt="Avatar" className="w-16 h-16 rounded-full" />
           <div className="ml-4 flex-grow text-left pt-1">
             <h1 className="text-lg font-bold">{loggedInUser.NOMUSR}</h1>
           </div>
