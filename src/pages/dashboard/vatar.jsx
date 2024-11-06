@@ -18,7 +18,7 @@ const Avatar = () => {
   }
 
   return (
-    <div className="flex justify-center items-center border-none m-0 p-0">
+    <div className="flex justify-center items-center border-none mt-4 p-0">
     <div className=" mb-5 border border-blue-gray-100 shadow-sm rounded-none bg-[#183f7f] text-[#ffff] w-full">
       <div className="flex flex-col space-y-2 p-4">
       <div  className="bg-[#183f7f] text-[#ffff]" style={{color:'#fffff',border:'none'}}><h2 className="font-bold">Bienvenue</h2></div>
