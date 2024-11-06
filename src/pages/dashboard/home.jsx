@@ -13,9 +13,11 @@ import {
   Textarea,
   Button,
   Option,
+  Avatar,
 } from "@material-tailwind/react";
 import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
+import Vatar from "@/pages/dashboard/vatar";
 import axios from "axios";
 import Chart from "react-apexcharts";
 
@@ -40,7 +42,7 @@ export function Home() {
     const fetchTasks = async () => {
       try {
         const USR = localStorage.getItem("loggedInUser");
-        const response = await axios.get("https://toptachesapi3.onrender.com/tasks/tasksall", {
+        const response = await axios.get("http://localhost:3000/tasks/tasksall", {
           headers: { usr: USR },
         });
 
@@ -224,7 +226,7 @@ export function Home() {
   
   const handleOpenViewDialog = async (task) => {
     try {
-      const response = await axios.get(`https://toptachesapi3.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
       console.log("API Response:", response.data); // Log the API response
@@ -241,7 +243,7 @@ export function Home() {
 
   const handleOpenEditDialog = async (task) => {
     try {
-      const response = await axios.get(`https://toptachesapi3.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
 
@@ -312,7 +314,7 @@ export function Home() {
     }
   
     try {
-      const response = await axios.put(`https://toptachesapi3.onrender.com/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
+      const response = await axios.put(`http://localhost:3000/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
   
@@ -349,7 +351,7 @@ export function Home() {
     }
   
     try {
-      const response = await axios.delete(`https://toptachesapi3.onrender.com/tasks/${selectedTask.TSKNUM}`);
+      const response = await axios.delete(`http://localhost:3000/tasks/${selectedTask.TSKNUM}`);
       if (response.data.success) {
         alert('Task deleted successfully');
         setOpenDeleteDialog(false);
@@ -388,7 +390,8 @@ export function Home() {
   };
 
   return (
-    <div className="mt-12">
+    <div className="">
+    <Vatar/>
       <div className="mb-12 grid gap-y-6 gap-x-16 md:grid-cols-2 xl:grid-cols-3">
         <StatisticsCard
           title="Total des tâches"
