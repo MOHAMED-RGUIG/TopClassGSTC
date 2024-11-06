@@ -18,6 +18,7 @@ import {
 import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
 import Vatar from "@/pages/dashboard/vatar";
+import Tables from "@/pages/dashboard/tables";
 import axios from "axios";
 import Chart from "react-apexcharts";
 
@@ -444,6 +445,8 @@ export function Home() {
       </div>
 
       {/* Task Table */}
+<Tables/>
+      {/*
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1">
       <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
           <CardHeader
@@ -457,7 +460,7 @@ export function Home() {
             </Typography>
 
             {/* Search Bar */}
-          </CardHeader>
+          {/**  </CardHeader>
 
           <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
@@ -523,7 +526,7 @@ export function Home() {
           </CardBody>
         </Card>
       </div>
-
+*/}
       {showProgress && (
         <Dialog open={showProgress} onClose={() => setShowProgress(false)}>
           <DialogHeader>{successMessage}</DialogHeader>
