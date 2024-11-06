@@ -18,7 +18,7 @@ import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon } from "@
 import { StatisticsCard } from "@/widgets/cards";
 import axios from "axios";
 import Chart from "react-apexcharts";
-
+import Vatar from "@/pages/dashboard/vatar";
 export function Tables() {
   const [tasks, setTasks] = useState([]); // Store tasks fetched from the backend
   const [openViewDialog, setOpenViewDialog] = useState(false);
@@ -29,6 +29,14 @@ export function Tables() {
   const [progress, setProgress] = useState(0);
   const [progressColor, setProgressColor] = useState("bg-blue-500");
   const [successMessage, setSuccessMessage] = useState("");
+  const [filter, setFilter] = useState("all");
+
+  // Filtrer les tâches selon le statut
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "realise") return task.TSKSTA === "Réalisé";
+    if (filter === "aFaire") return task.TSKSTA === "À faire";
+    return true; // 'all' affiche toutes les tâches
+  });
   const [statistics, setStatistics] = useState({
     totalTasks: 0,
     completedTasks: 0,
@@ -40,7 +48,7 @@ export function Tables() {
     const fetchTasks = async () => {
       try {
         const USR = localStorage.getItem("loggedInUser");
-        const response = await axios.get("https://toptachesapi3.onrender.com/tasks/tasksall", {
+        const response = await axios.get("http://localhost:3000/tasks/tasksall", {
           headers: { usr: USR },
         });
 
@@ -92,7 +100,7 @@ export function Tables() {
   // Open dialog handlers
   const handleOpenViewDialog = async (task) => {
     try {
-      const response = await axios.get(`https://toptachesapi3.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
       console.log("API Response:", response.data); // Log the API response
@@ -109,7 +117,7 @@ export function Tables() {
 
   const handleOpenEditDialog = async (task) => {
     try {
-      const response = await axios.get(`https://toptachesapi3.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
 
@@ -183,7 +191,7 @@ export function Tables() {
   
     try {
       console.log("Sending data to backend:", selectedTask);
-      const response = await axios.put(`https://toptachesapi3.onrender.com/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
+      const response = await axios.put(`http://localhost:3000/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
   
@@ -221,7 +229,7 @@ export function Tables() {
     }
   
     try {
-      const response = await axios.delete(`https://toptachesapi3.onrender.com/tasks/${selectedTask.TSKNUM}`);
+      const response = await axios.delete(`http://localhost:3000/tasks/${selectedTask.TSKNUM}`);
       if (response.data.success) {
         console.log('Task deleted successfully');
         setOpenDeleteDialog(false);
@@ -261,10 +269,40 @@ export function Tables() {
 
   return (
     <div className="font-poppins mt-12">
-      <div id="heading-tit"><h2>Liste des tâches</h2></div>
+      <div id="heading-tit">
+        <h2>Liste des tâches</h2>
+      </div>
+
+      {/* Boutons de Filtrage */}
+      <div className="mb-4 flex gap-4">
+        <button
+          onClick={() => setFilter("realise")}
+          className={`px-4 py-2 rounded ${
+            filter === "realise" ? "bg-[#183f7f] text-white" : "bg-gray-500 text-white"
+          }`}
+        >
+          Réalisé
+        </button>
+        <button
+          onClick={() => setFilter("aFaire")}
+          className={`px-4 py-2 rounded ${
+            filter === "aFaire" ? "bg-[#183f7f] text-white" : "bg-gray-500 text-white"
+          }`}
+        >
+          À Faire
+        </button>
+        <button
+          onClick={() => setFilter("all")}
+          className={`px-4 py-2 rounded ${
+            filter === "all" ? "bg-[#183f7f] text-white" : "bg-gray-500 text-white"
+          }`}
+        >
+          Tous
+        </button>
+      </div>
+
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1">
         <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
-
           <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
             <table className="w-full min-w-[250px] table-auto">
               <thead>
@@ -279,9 +317,9 @@ export function Tables() {
                 </tr>
               </thead>
               <tbody>
-                {tasks.map((task, key) => {
+                {filteredTasks.map((task, key) => {
                   const className = `py-3 px-5 ${
-                    key === tasks.length - 1 ? "" : "border-b border-blue-gray-50"
+                    key === filteredTasks.length - 1 ? "" : "border-b border-blue-gray-50"
                   }`;
 
                   return (
