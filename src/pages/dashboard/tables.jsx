@@ -310,7 +310,7 @@ export function Tables() {
       {filteredTasks.map((task, index) => (
         <div
           key={index}
-          className="flex items-center justify-between px-6 py-4 bg-white shadow-md rounded-lg pt-5 mt-5"
+          className="flex items-center justify-between px-6 py-4 bg-white shadow-md rounded-lg pt-5 mt-5 border border-blue-900 border-t-0 border-l-1 border-r-0 border-b-0"
         >
           {/* Colonne de gauche pour le titre et la description */}
           <div className="flex flex-col">
