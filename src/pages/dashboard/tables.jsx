@@ -334,7 +334,7 @@ export function Tables() {
           </div>
           {/* Ligne pour les boutons d'action */}
           <div className="flex justify-between py-2">
-            <span className="font-semibold">Action :</span>
+            <span className="font-semibold"></span>
             <div className="flex gap-2">
               {renderActionIcons(task)} {/* Cette fonction doit retourner les icônes ou boutons d'action */}
             </div>
