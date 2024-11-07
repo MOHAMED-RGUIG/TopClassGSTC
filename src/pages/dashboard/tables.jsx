@@ -321,7 +321,7 @@ export function Tables() {
                 <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */} </span>
             <div className="flex items-center gap-4 mt-2 text-gray-200">
               <div className="flex items-center gap-1">
-                   <i className="material-icons">de  {formatTime(task.HURDEB)}</i> {/* Icône pour l'entreprise */}
+                   <span>de  {formatTime(task.HURDEB)}</span> {/* Icône pour l'entreprise */}
                 {/* Remplacez par le nom de la société */}
               </div>
               <div className="flex items-center gap-1">
@@ -333,7 +333,7 @@ export function Tables() {
 
           {/* Colonne de droite pour l'état et les actions */}
           <div className="text-right">
-            <span className="text-2xl font-bold text-gray-300">{formatDate(task.DATDEB)}</span>
+            <span className="text-xl text-black-300">{formatDate(task.DATDEB)}</span>
             <div className="text-blue-400 font-semibold mt-2">{task.TSKSTA}</div>
             <div className="flex gap-2 mt-4">
               {renderActionIcons(task)} {/* Boutons d'action */}
