@@ -301,72 +301,49 @@ export function Tables() {
         </button>
       </div>
 
+   
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1">
-        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-            <table className="w-full min-w-[250px] table-auto">
-              <thead>
-                <tr>
-                  {["Task", "Client", "Date", "heure debut", "heure fin", "Status", "Action"].map((el) => (
-                    <th key={el} className="border-b border-blue-gray-50 py-3 px-6 text-left">
-                      <Typography variant="small" className="tc-label-table">
-                        {el}
-                      </Typography>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredTasks.map((task, key) => {
-                  const className = `py-3 px-5 ${
-                    key === filteredTasks.length - 1 ? "" : "border-b border-blue-gray-50"
-                  }`;
+  <Card className="overflow-hidden xl:col-span-2 border shadow-sm">
+    <CardBody className="px-0 py-4 ">
+      {filteredTasks.map((task, index) => (
+        <div key={index} className="gap-y-4 mt-5 pt-5 px-6 py-4 bg-blue-50 text-[#183f7f] rounded-lg border-blue-gray-100">
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Task :</span>
+            <span className="text-right">{task.TSKOBJ}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Client :</span>
+            <span className="text-right">{task.NOMCLI}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Date :</span>
+            <span className="text-right">{formatDate(task.DATDEB)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Heure debut :</span>
+            <span className="text-right">   {formatTime(task.HURDEB)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Heure fin :</span>
+            <span className="text-right"> {formatTime(task.HURFIN)}</span>
+          </div>
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Status :</span>
+            <span className="text-right"> {task.TSKSTA}</span>
+          </div>
+          {/* Ligne pour les boutons d'action */}
+          <div className="flex justify-between py-2">
+            <span className="font-semibold">Action :</span>
+            <div className="flex gap-2">
+              {renderActionIcons(task)} {/* Cette fonction doit retourner les icônes ou boutons d'action */}
+            </div>
+          </div>
+        </div>
+      ))}
+    </CardBody>
+  </Card>
+</div>
 
-                  return (
-                    <tr key={key}>
-                      <td className={className}>
-                        <Typography variant="small" color="blue-gray" className="tc-label-table">
-                          {task.TSKOBJ}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography variant="small" className="tc-label-table">
-                          {task.NOMCLI}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography variant="small" className="tc-label-table">
-                          {formatDate(task.DATDEB)}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography variant="small" className="tc-label-table">
-                          {formatTime(task.HURDEB)}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography variant="small" className="tc-label-table">
-                          {formatTime(task.HURFIN)}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography variant="small" className="tc-label-table">
-                          {task.TSKSTA}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <div className="flex gap-2">
-                          {renderActionIcons(task)}
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </CardBody>
-        </Card>
-      </div>
 
       {showProgress && (
         <Dialog open={showProgress} onClose={() => setShowProgress(false)}>
