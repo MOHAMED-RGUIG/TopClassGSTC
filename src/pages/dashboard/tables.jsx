@@ -249,7 +249,7 @@ export function Tables() {
     return (
       <>
         <EyeIcon
-          className="h-5 w-5 cursor-pointer text-yellow-500"
+          className="h-5 w-5 cursor-pointer text-black-500"
           onClick={() => {
             console.log("Opening dialog for task:", task);
             handleOpenViewDialog(task);
