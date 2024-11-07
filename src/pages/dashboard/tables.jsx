@@ -317,14 +317,15 @@ export function Tables() {
             <span className="text-lg font-bold text-blue-gray-800">
               {task.TSKOBJ} {/* Remplacez par le titre réel */}
             </span>
-            <span className="text-gray-500">Description...</span>
+            <span className="text-gray-500"><i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
+                <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */} </span>
             <div className="flex items-center gap-4 mt-2 text-gray-500">
               <div className="flex items-center gap-1">
-                <i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
-                <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */}
+                   <i className="material-icons">de  {formatTime(task.HURDEB)}</i> {/* Icône pour l'entreprise */}
+                {/* Remplacez par le nom de la société */}
               </div>
               <div className="flex items-center gap-1">
-                <i className="material-icons">de  {formatTime(task.HURDEB)}</i> {/* Icône pour la date */}
+              {/* Icône pour la date */}
                 <span>à {formatTime(task.HURFIN)}</span> {/* Remplacez par la date */}
               </div>
             </div>
