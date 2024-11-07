@@ -314,12 +314,12 @@ export function Tables() {
         >
           {/* Colonne de gauche pour le titre et la description */}
           <div className="flex flex-col">
-            <span className="text-lg font-bold text-blue-gray-800">
+            <span className="text-lg font-bold text-blue-gray-500">
               {task.TSKOBJ} {/* Remplacez par le titre réel */}
             </span>
-            <span className="text-gray-500"><i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
+            <span className="text-gray-200"><i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
                 <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */} </span>
-            <div className="flex items-center gap-4 mt-2 text-gray-500">
+            <div className="flex items-center gap-4 mt-2 text-gray-200">
               <div className="flex items-center gap-1">
                    <i className="material-icons">de  {formatTime(task.HURDEB)}</i> {/* Icône pour l'entreprise */}
                 {/* Remplacez par le nom de la société */}
@@ -333,8 +333,8 @@ export function Tables() {
 
           {/* Colonne de droite pour l'état et les actions */}
           <div className="text-right">
-            <span className="text-2xl font-bold text-gray-700">{formatDate(task.DATDEB)}</span>
-            <div className="text-blue-500 font-semibold mt-2">{task.TSKSTA}</div>
+            <span className="text-2xl font-bold text-gray-300">{formatDate(task.DATDEB)}</span>
+            <div className="text-blue-400 font-semibold mt-2">{task.TSKSTA}</div>
             <div className="flex gap-2 mt-4">
               {renderActionIcons(task)} {/* Boutons d'action */}
             </div>
