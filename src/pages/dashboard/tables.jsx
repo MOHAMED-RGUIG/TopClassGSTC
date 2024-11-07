@@ -334,10 +334,10 @@ export function Tables() {
           {/* Colonne de droite pour l'état et les actions */}
           <div className="text-right">
             <span className="text-xl text-black-300">{formatDate(task.DATDEB)}</span>
-            <div className="text-blue-400 font-semibold mt-2">{task.TSKSTA}<br></br><div className="flex gap-2 mt-4 text-right">
+            <div className="text-blue-400 font-semibold mt-2">{task.TSKSTA} </div>
+            <div className="flex gap-2 mt-4 text-right">
               {renderActionIcons(task)} {/* Boutons d'action */}
-            </div> </div>
-            
+            </div>
           </div>
         </div>
       ))}
