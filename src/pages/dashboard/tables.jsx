@@ -275,6 +275,14 @@ export function Tables() {
 
       {/* Boutons de Filtrage */}
       <div className="mb-4 flex gap-4">
+         <button
+          onClick={() => setFilter("all")}
+          className={`px-4 py-2 rounded ${
+            filter === "all" ? "bg-[#183f7f] text-white" : "bg-gray-500 text-white"
+          }`}
+        >
+          Tous
+        </button>
         <button
           onClick={() => setFilter("realise")}
           className={`px-4 py-2 rounded ${
@@ -291,14 +299,7 @@ export function Tables() {
         >
           À Faire
         </button>
-        <button
-          onClick={() => setFilter("all")}
-          className={`px-4 py-2 rounded ${
-            filter === "all" ? "bg-[#183f7f] text-white" : "bg-gray-500 text-white"
-          }`}
-        >
-          Tous
-        </button>
+       
       </div>
 
    
