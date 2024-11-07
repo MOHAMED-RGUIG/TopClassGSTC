@@ -304,8 +304,8 @@ export function Tables() {
 
    
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1">
-  <Card className="overflow-hidden xl:col-span-2 border shadow-sm">
-    <CardBody className="px-0 py-4 ">
+  <Card className="overflow-hidden xl:col-span-2 border-none shadow-sm bg-blue-grey ">
+    <CardBody className="px-0 py-4 bg-blue">
       {filteredTasks.map((task, index) => (
         <div key={index} className="gap-y-4 mt-5 pt-5 px-6 py-4 bg-blue-50 text-[#183f7f] rounded-lg border-blue-gray-100">
             {/* Ligne pour les boutons d'action */}
