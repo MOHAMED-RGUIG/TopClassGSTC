@@ -303,48 +303,47 @@ export function Tables() {
       </div>
 
    
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1">
-  <Card className="overflow-hidden xl:col-span-2 border-none shadow-sm bg-blue-grey ">
-    <CardBody className="px-0 py-4 bg-blue">
+
+      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
+  <Card className="overflow-hidden xl:col-span-2 shadow-sm bg-[#ECEFF100]">
+    <CardBody className="px-0 py-4 bg-[#ECEFF100]">
       {filteredTasks.map((task, index) => (
-        <div key={index} className="gap-y-4 mt-5 pt-5 px-6 py-4 bg-blue-50 text-[#183f7f] rounded-lg border-blue-gray-100">
-            {/* Ligne pour les boutons d'action */}
-          <div className="flex justify-between py-2">
-            <span className="font-semibold"></span>
-            <div className="flex gap-2">
-              {renderActionIcons(task)} {/* Cette fonction doit retourner les icônes ou boutons d'action */}
+        <div
+          key={index}
+          className="flex items-center justify-between px-6 py-4 bg-white shadow-md rounded-lg pt-5 mt-5"
+        >
+          {/* Colonne de gauche pour le titre et la description */}
+          <div className="flex flex-col">
+            <span className="text-lg font-bold text-blue-gray-800">
+              {task.TSKOBJ} {/* Remplacez par le titre réel */}
+            </span>
+            <span className="text-gray-500">Description...</span>
+            <div className="flex items-center gap-4 mt-2 text-gray-500">
+              <div className="flex items-center gap-1">
+                <i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
+                <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */}
+              </div>
+              <div className="flex items-center gap-1">
+                <i className="material-icons">de  {formatTime(task.HURDEB)}</i> {/* Icône pour la date */}
+                <span>à {formatTime(task.HURFIN)}</span> {/* Remplacez par la date */}
+              </div>
             </div>
           </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Task :</span>
-            <span className="text-right">{task.TSKOBJ}</span>
+
+          {/* Colonne de droite pour l'état et les actions */}
+          <div className="text-right">
+            <span className="text-2xl font-bold text-gray-700">{formatDate(task.DATDEB)}</span>
+            <div className="text-blue-500 font-semibold mt-2">{task.TSKSTA}</div>
+            <div className="flex gap-2 mt-4">
+              {renderActionIcons(task)} {/* Boutons d'action */}
+            </div>
           </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Client :</span>
-            <span className="text-right">{task.NOMCLI}</span>
-          </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Date :</span>
-            <span className="text-right">{formatDate(task.DATDEB)}</span>
-          </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Heure debut :</span>
-            <span className="text-right">   {formatTime(task.HURDEB)}</span>
-          </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Heure fin :</span>
-            <span className="text-right"> {formatTime(task.HURFIN)}</span>
-          </div>
-          <div className="flex justify-between py-2">
-            <span className="font-semibold">Status :</span>
-            <span className="text-right"> {task.TSKSTA}</span>
-          </div>
-        
         </div>
       ))}
     </CardBody>
   </Card>
 </div>
+
 
 
       {showProgress && (
