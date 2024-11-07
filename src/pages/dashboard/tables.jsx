@@ -308,6 +308,13 @@ export function Tables() {
     <CardBody className="px-0 py-4 ">
       {filteredTasks.map((task, index) => (
         <div key={index} className="gap-y-4 mt-5 pt-5 px-6 py-4 bg-blue-50 text-[#183f7f] rounded-lg border-blue-gray-100">
+            {/* Ligne pour les boutons d'action */}
+          <div className="flex justify-between py-2">
+            <span className="font-semibold"></span>
+            <div className="flex gap-2">
+              {renderActionIcons(task)} {/* Cette fonction doit retourner les icônes ou boutons d'action */}
+            </div>
+          </div>
           <div className="flex justify-between py-2">
             <span className="font-semibold">Task :</span>
             <span className="text-right">{task.TSKOBJ}</span>
@@ -332,13 +339,7 @@ export function Tables() {
             <span className="font-semibold">Status :</span>
             <span className="text-right"> {task.TSKSTA}</span>
           </div>
-          {/* Ligne pour les boutons d'action */}
-          <div className="flex justify-between py-2">
-            <span className="font-semibold"></span>
-            <div className="flex gap-2">
-              {renderActionIcons(task)} {/* Cette fonction doit retourner les icônes ou boutons d'action */}
-            </div>
-          </div>
+        
         </div>
       ))}
     </CardBody>
