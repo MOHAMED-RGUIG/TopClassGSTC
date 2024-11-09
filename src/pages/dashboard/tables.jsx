@@ -30,13 +30,49 @@ export function Tables() {
   const [progressColor, setProgressColor] = useState("bg-blue-500");
   const [successMessage, setSuccessMessage] = useState("");
   const [filter, setFilter] = useState("all");
+{/* FILTRE */}
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedFields, setSelectedFields] = useState({
+    TSKOBJ: false,
+    NOMCLI: false,
+    HURDEB: false,
+    HURFIN: false,
+    DATDEB: false,
+  });
 
+  // Toggle Filter Popup
+  const toggleFilterPopup = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  // Handle Field Selection
+  const handleFieldChange = (field) => {
+    setSelectedFields((prevFields) => ({
+      ...prevFields,
+      [field]: !prevFields[field],
+    }));
+  };
+  const filteredTasks = tasks
+  .filter((task) => {
+    if (filter === "realise") return task.TSKSTA === "Réalisé";
+    if (filter === "aFaire") return task.TSKSTA === "À faire";
+    return true; // 'all' displays all tasks
+  })
+  .filter((task) =>
+    Object.keys(selectedFields).some(
+      (field) =>
+        selectedFields[field] &&
+        task[field]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  )
+  {/* FILTRE */}
   // Filtrer les tâches selon le statut
-  const filteredTasks = tasks.filter((task) => {
+ /* const filteredTasks = tasks.filter((task) => {
     if (filter === "realise") return task.TSKSTA === "Réalisé";
     if (filter === "aFaire") return task.TSKSTA === "À faire";
     return true; // 'all' affiche toutes les tâches
-  });
+  });*/
   const [statistics, setStatistics] = useState({
     totalTasks: 0,
     completedTasks: 0,
@@ -304,6 +340,53 @@ export function Tables() {
 
    
 
+{/* FILTRE */}
+      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
+      {/* Search and Filter Controls */}
+      <div className="flex items-center gap-4 mb-4">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search..."
+          className="p-2 border rounded-md w-full"
+        />
+        <button
+          onClick={toggleFilterPopup}
+          className="p-2 bg-blue-500 text-white rounded-md"
+        >
+          Filter
+        </button>
+      </div>
+
+      {/* Filter Popup */}
+      {isFilterOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white p-6 rounded-md shadow-lg w-1/2">
+            <h3 className="text-lg font-semibold mb-4">Select Fields to Filter</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {Object.keys(selectedFields).map((field) => (
+                <label key={field} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedFields[field]}
+                    onChange={() => handleFieldChange(field)}
+                  />
+                  {field}
+                </label>
+              ))}
+            </div>
+            <button
+              onClick={toggleFilterPopup}
+              className="mt-4 p-2 bg-blue-500 text-white rounded-md"
+            >
+              Apply Filters
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Task List */}
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
   <Card className="overflow-hidden xl:col-span-2 shadow-sm bg-[#ECEFF100]">
     <CardBody className="px-0 py-4 bg-[#ECEFF100]">
@@ -344,7 +427,8 @@ export function Tables() {
       ))}
     </CardBody>
   </Card>
-</div>
+</div></div>
+ {/* FILTRE */}
 
 
 
