@@ -55,17 +55,23 @@ export function Tables() {
   };
   const filteredTasks = tasks
   .filter((task) => {
+    // Default to show all tasks if 'all' is selected or no specific filter is applied
     if (filter === "realise") return task.TSKSTA === "Réalisé";
     if (filter === "aFaire") return task.TSKSTA === "À faire";
-    return true; // 'all' displays all tasks
+    return true; // 'all' or default shows all tasks
   })
-  .filter((task) =>
-    Object.keys(selectedFields).some(
+  .filter((task) => {
+    // Only apply search if there’s a search term or selected fields
+    if (!searchTerm || !Object.values(selectedFields).some((isSelected) => isSelected)) {
+      return true; // No search term or fields selected: show all tasks based on status filter only
+    }
+    // Apply field-based filtering if any field is selected and search term is present
+    return Object.keys(selectedFields).some(
       (field) =>
         selectedFields[field] &&
         task[field]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  )
+    );
+  });
   {/* FILTRE */}
   // Filtrer les tâches selon le statut
  /* const filteredTasks = tasks.filter((task) => {
