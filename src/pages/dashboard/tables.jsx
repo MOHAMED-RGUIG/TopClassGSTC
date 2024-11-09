@@ -353,7 +353,7 @@ export function Tables() {
         />
         <button
           onClick={toggleFilterPopup}
-          className="p-2 bg-blue-500 text-white rounded-md"
+          className="p-2 bg-[#183f7f] text-white rounded-md"
         >
           Filter
         </button>
