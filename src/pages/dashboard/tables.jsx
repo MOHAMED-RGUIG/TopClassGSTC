@@ -355,7 +355,7 @@ export function Tables() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search..."
-          className="p-2 border rounded-md w-full"
+          className="p-2 w-full"
         />
         <button
           onClick={toggleFilterPopup}
