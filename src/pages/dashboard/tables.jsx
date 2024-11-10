@@ -361,7 +361,7 @@ export function Tables() {
           onClick={toggleFilterPopup}
           className="p-2 bg-[#183f7f] text-white rounded-md"
         >
-          Filter
+             <FaFilter className="text-lg" /> {/* Font Awesome filter icon */}
         </button>
       </div>
 
