@@ -384,7 +384,7 @@ export function Tables() {
             </div>
             <button
               onClick={toggleFilterPopup}
-              className="mt-4 p-2 bg-blue-500 text-white rounded-md"
+              className="mt-4 p-2 bg-[#183f7f] text-white rounded-md"
             >
               Apply Filters
             </button>
