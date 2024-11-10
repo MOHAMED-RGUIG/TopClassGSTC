@@ -19,6 +19,7 @@ import { StatisticsCard } from "@/widgets/cards";
 import axios from "axios";
 import Chart from "react-apexcharts";
 import Vatar from "@/pages/dashboard/vatar";
+import { FaFilter } from "react-icons/fa";
 export function Tables() {
   const [tasks, setTasks] = useState([]); // Store tasks fetched from the backend
   const [openViewDialog, setOpenViewDialog] = useState(false);
