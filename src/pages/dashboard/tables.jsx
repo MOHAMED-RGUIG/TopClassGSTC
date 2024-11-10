@@ -386,7 +386,7 @@ export function Tables() {
               onClick={toggleFilterPopup}
               className="mt-4 p-2 bg-[#183f7f] text-white rounded-md"
             >
-              Apply Filters
+             Appliquer le filtre
             </button>
           </div>
         </div>
