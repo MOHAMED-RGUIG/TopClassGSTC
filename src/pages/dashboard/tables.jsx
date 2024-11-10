@@ -369,7 +369,7 @@ export function Tables() {
       {isFilterOpen && (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
               <div className="bg-white p-6 rounded-md shadow-lg w-1/2">
-            <h3 className="text-lg font-semibold mb-4">Select Fields to Filter</h3>
+            <h3 className="text-lg font-semibold mb-4">Sélectionner les champs pour filtrer</h3>
             <div className="grid grid-cols-2 gap-4">
               {Object.keys(selectedFields).map((field) => (
                 <label key={field} className="flex items-center gap-2">
