@@ -455,7 +455,7 @@ export function Tables() {
   {/* Button aligned to the right */}
   <button
   className={`text-white text-[12px] px-4 py-1 rounded-2xl ${
-    task.TSKSTA === 'Réalisé' ? 'bg-[#2e8b57]' : 'bg-[#183f7f]'
+    task.TSKSTA === 'Réalisé' ? 'bg-[#007f66]' : 'bg-[#183f7f]'
   }`}
 >
   {task.TSKSTA === 'Réalisé' ? 'Réalisé' : 'À Faire'}
