@@ -158,6 +158,7 @@ export function CreateAccount() {
   return (
     <div className="mt-12">
       <div id="heading-tit"><h2>Création du compte</h2></div>
+    
       <div className="flex justify-center items-center mb-6">
         <Card className="w-full max-w-lg transform transition">
           <CardBody className="flex justify-center bg-white p-4 rounded-lg">
@@ -400,7 +401,7 @@ export function CreateAccount() {
                     <Input type="email" label="Email" name="email" value={contact.email} onChange={(e) => handleContactChange(index, e)} className="tc-text-input"/>
                   </div>
                 ))}
-                <Button type="button" onClick={handleAddContact} className="mt-4 rounded-full bg-[#1b6cfc] text-white"><AiOutlinePlus /></Button>
+                <Button type="button" onClick={handleAddContact} className="mt-4 rounded-full bg-[#183f7f] text-white"><AiOutlinePlus /></Button>
               </div>
               <Input
                 type="text"
@@ -450,7 +451,7 @@ export function CreateAccount() {
                     <Input type="text" label="État" name="etat" value={machine.etat} onChange={(e) => handleMachineChange(index, e)} className="tc-text-input"/>
                   </div>
                 ))}
-                <Button type="button" onClick={handleAddMachine} className="mt-4 rounded-full bg-[#1b6cfc] text-white"><AiOutlinePlus /></Button>
+                <Button type="button" onClick={handleAddMachine} className="mt-4 rounded-full bg-[#183f7f] text-white"><AiOutlinePlus /></Button>
               </div>
 
               <Input
@@ -465,7 +466,7 @@ export function CreateAccount() {
               {/* Additional fields similar to above */}
               {/* Contacts and machines sections similar to above with add and edit functionalities */}
 
-              <Button type="submit" className="mt-4 rounded-full bg-[#1b6cfc] text-white tc-button">
+              <Button type="submit" className="mt-4 rounded-full bg-[#183f7f] text-white tc-button">
                 Envoyer
               </Button>
               {showSuccess && (
