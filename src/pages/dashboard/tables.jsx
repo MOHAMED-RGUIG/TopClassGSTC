@@ -303,18 +303,18 @@ export function Tables() {
     return (
       <>
         <EyeIcon
-          className="h-5 w-5 cursor-pointer text-black-500"
+          className="h-4 w-4 cursor-pointer text-black-500"
           onClick={() => {
             console.log("Opening dialog for task:", task);
             handleOpenViewDialog(task);
           }}
         />
         <PencilIcon
-          className="h-5 w-5 cursor-pointer text-blue-500"
+          className="h-4 w-4 cursor-pointer text-blue-500"
           onClick={() => handleOpenEditDialog(task)}
         />
         <TrashIcon
-          className="h-5 w-5 cursor-pointer text-red-500"
+          className="h-4 w-4 cursor-pointer text-red-500"
           onClick={() => handleOpenDeleteDialog(task)}
         />
       </>
