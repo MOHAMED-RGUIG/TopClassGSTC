@@ -102,16 +102,16 @@ export function AddTask() {
 
   return (
     <div className="mt-12">
-      <div id="heading-tit"><h2>Ajouter une tâche</h2></div>
-      <div className="flex justify-center items-center mb-6">
-        <Card className="w-full max-w-lg transform transition ">
-          <CardBody className="flex justify-center bg-white p-4 rounded-lg">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <div id="heading-tit"><h2>Ajouter une tache</h2></div>
+  
+    <div className="flex justify-center items-center mb-6">
+      <Card className="w-full max-w-lg transform transition">
+        <CardBody className="flex justify-center bg-white p-4 rounded-lg">
+          <form onSubmit={handleSubmit} className="ajoutertache flex flex-col gap-4">
 
               {/* Type de tâche */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1 tc-label">Type de tâche</Typography>
-                <Select value={TSKTYP} onChange={(e) => setTSKTYP(e)} className="tc-text-input">
+                <Select value={TSKTYP} label="Type de tache" onChange={(e) => setTSKTYP(e)} className="tc-text-input ">
                   <Option value="Réunion Commercial">Réunion Commercial</Option>
                   <Option value="Visite Client">Visite Client</Option>
                   <Option value="Prospection">Prospection</Option>
@@ -125,8 +125,7 @@ export function AddTask() {
 
               {/* Action de la tâche */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1 tc-label">Action de la tâche</Typography>
-                <Select value={TSKACT} onChange={(e) => setTSKACT(e)} className="tc-text-input">
+                <Select value={TSKACT} label="Action de la tâche" onChange={(e) => setTSKACT(e)} className="tc-text-input">
                   <Option value="Action 1">Action 1</Option>
                   <Option value="Action 2">Action 2</Option>
                   <Option value="Action 3">Action 3</Option>
@@ -135,8 +134,8 @@ export function AddTask() {
 
               {/* Date de début */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Date de début</Typography>
                 <Input
+                  label="Date de début"
                   type="date"
                   value={DATDEB}
                   onChange={(e) => setDATDEB(e.target.value)}
@@ -146,8 +145,8 @@ export function AddTask() {
 
               {/* Heure de début */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1 tc-label">Heure de début</Typography>
                 <Input
+                label="Heure de début"
                   type="time"
                   value={HURDEB}
                   onChange={(e) => setHURDEB(e.target.value)}
@@ -157,8 +156,8 @@ export function AddTask() {
 
               {/* Heure de fin */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Heure de fin</Typography>
                 <Input
+                    label="Heure de fin"
                   type="time"
                   value={HURFIN}
                   onChange={(e) => setHURFIN(e.target.value)}
@@ -168,8 +167,8 @@ export function AddTask() {
 
               {/* Code Client */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Code Client</Typography>
                 <Input
+                label="Code Client"
                   type="text"
                   value={CLI}
                   onChange={(e) => setCLI(e.target.value)}
@@ -179,8 +178,8 @@ export function AddTask() {
 
               {/* Nom de client */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Nom de client</Typography>
                 <Input
+                 label="Nom de Client"
                   type="text"
                   value={NOMCLI}
                   onChange={(e) => setNOMCLI(e.target.value)}
@@ -190,8 +189,7 @@ export function AddTask() {
 
               {/* Catégorie */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Catégorie</Typography>
-                <Select value={CATCLI} onChange={(e) => setCATCLI(e)} className="tc-text-input">
+                <Select value={CATCLI}  label="Catégorie" onChange={(e) => setCATCLI(e)} className="tc-text-input">
                   <Option value="Categorie 1">Categorie 1</Option>
                   <Option value="Categorie 2">Categorie 2</Option>
                   <Option value="Categorie 3">Categorie 3</Option>
@@ -200,8 +198,8 @@ export function AddTask() {
 
               {/* Adresse du client */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1 tc-label">Adresse de client</Typography>
                 <Input
+                label="Adresse de client"
                   type="text"
                   value={ADRCLI}
                   onChange={(e) => setADRCLI(e.target.value)}
@@ -211,8 +209,8 @@ export function AddTask() {
 
               {/* Nom de contact */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Nom de contact</Typography>
                 <Input
+                label="Nom de contact"
                   type="text"
                   value={NOMCNT}
                   onChange={(e) => setNOMCNT(e.target.value)}
@@ -222,8 +220,7 @@ export function AddTask() {
 
               {/* Fonction du client */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Fonction du client</Typography>
-                <Select value={FNCCNT} onChange={(e) => setFNCCNT(e)} className="tc-text-input">
+                <Select value={FNCCNT} label="Fonction du client" onChange={(e) => setFNCCNT(e)} className="tc-text-input">
                   <Option value="P.D.G">P.D.G</Option>
                   <Option value="Directeur Commercial">Directeur Commercial</Option>
                   <Option value="Directeur Technique">Directeur Technique</Option>
@@ -239,8 +236,8 @@ export function AddTask() {
 
               {/* Téléphone */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Téléphone</Typography>
                 <Input
+                label="Téléphone"
                   type="text"
                   value={TELCNT}
                   onChange={(e) => setTELCNT(e.target.value)}
@@ -250,8 +247,8 @@ export function AddTask() {
 
               {/* Objet de la tâche */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Objet de la tâche</Typography>
                 <Input
+                  label="Objet de la tâche"
                   type="text"
                   value={TSKOBJ}
                   onChange={(e) => setTSKOBJ(e.target.value)}
@@ -261,9 +258,8 @@ export function AddTask() {
 
               {/* Compte rendu */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Compte rendu</Typography>
                 <textarea
-                  
+                    label="Compte rendu"
                   value={TSKCMR}
                   onChange={(e) => setTSKCMR(e.target.value)}
                   className="tc-text-input tc-text-textarea"
@@ -274,14 +270,13 @@ export function AddTask() {
 
               {/* Statut */}
               <div>
-                <Typography variant="small" color="blue-gray" className="mb-1  tc-label">Statut</Typography>
-                <Select value={TSKSTA} onChange={(e) => setTSKSTA(e)} className="tc-text-input">
+                <Select value={TSKSTA}     label="Statut" onChange={(e) => setTSKSTA(e)} className="tc-text-input">
                   <Option value="Réalisé">Réalisé</Option>
                   <Option value="À faire">À faire</Option>
                 </Select>
               </div>
 
-              <Button type="submit" className="mt-4 rounded-full bg-[#1b6cfc] text-white tc-button" fullWidth>
+              <Button type="submit" className="mt-4 rounded-full bg-[#183f7f] text-white tc-button" fullWidth>
                 Ajouter la tâche
               </Button>
               {showSuccess && (
@@ -301,5 +296,4 @@ export function AddTask() {
     </div>
   );
 }
-
 export default AddTask;
