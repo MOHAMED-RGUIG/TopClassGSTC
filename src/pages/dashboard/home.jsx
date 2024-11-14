@@ -179,7 +179,7 @@ export function Home() {
           vertical: 5
         }
       },
-      colors: ['#183f7f', '#007f66 '],// Yellow for 'À Faire', Blue for 'Réalisées'
+      colors: ['#183f7f', '#007f66'],// Yellow for 'À Faire', Blue for 'Réalisées'
       responsive: [{
         breakpoint: 480,
         options: {
