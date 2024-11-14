@@ -212,7 +212,7 @@ export function Home() {
           shade: 'dark',
           type: 'vertical',
           shadeIntensity: 0.5,
-          gradientToColors: ['#183f7f', '#fee549'], // Gradient to match base colors
+          gradientToColors: ['#007f66', '#183f7f'], // Gradient to match base colors
           inverseColors: true,
           opacityFrom: 0.85,
           opacityTo: 0.85,
