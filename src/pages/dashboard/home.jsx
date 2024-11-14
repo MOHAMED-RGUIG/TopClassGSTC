@@ -114,7 +114,7 @@ export function Home() {
           top: 0,
           left: 0,
           blur: 5,
-          color: '#000',
+          color: '',
           opacity: 0.5
         }
       },
@@ -123,7 +123,7 @@ export function Home() {
         pie: {
           donut: {
             size: '65%',
-            background: 'transparent',
+            background: '',
             labels: {
               show: true,
               name: {
@@ -202,7 +202,7 @@ export function Home() {
         show: true,
         curve: 'smooth',
         lineCap: 'butt',
-        colors: ['transparent'], // Hide stroke lines
+        colors: [''], // Hide stroke lines
         width: 2,
         dashArray: 0,      
       },
@@ -213,7 +213,7 @@ export function Home() {
           type: 'vertical',
           shadeIntensity: 0.5,
           gradientToColors: ['#007f66', '#183f7f'], // Gradient to match base colors
-          inverseColors: true,
+          inverseColors: false,
           opacityFrom: 0.85,
           opacityTo: 0.85,
           stops: [0, 100]
