@@ -14,7 +14,7 @@ import {
   Button,
   Option,
 } from "@material-tailwind/react";
-import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon ,UserIcon, CalendarIcon, ClockIcon} from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
 import axios from "axios";
 import Chart from "react-apexcharts";
@@ -195,9 +195,18 @@ export function Tables() {
     setSelectedTask(task);
     setOpenDeleteDialog(true);
   };
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    const formatDate = (dateString) => {
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return '';
+    }
   };
   
   const formatTime = (timeString) => {
@@ -205,25 +214,27 @@ export function Tables() {
       console.log("formatTime called with undefined or null");
       return '';
     }
-    
-    // Check if timeString is in the expected format
-    console.log("Original time string:", timeString);
-    
+  
     try {
-      const timeParts = timeString.split('T')[1].split(':'); // Assuming ISO string format
-      const hours = timeParts[0];
-      const minutes = timeParts[1];
+      const timeParts = timeString.split(':'); // Assuming time is in "HH:mm:ss" or "HH:mm" format
+      const hours = parseInt(timeParts[0], 10);
+      const minutes = parseInt(timeParts[1], 10);
   
       const date = new Date();
-      date.setHours(parseInt(hours), parseInt(minutes), 0);
+      date.setUTCHours(hours, minutes, 0); // Set time in UTC (GMT)
   
-      const options = { hour: '2-digit', minute: '2-digit', hour12: true };
-      return date.toLocaleTimeString('en-US', options);
+      return date.toLocaleTimeString('fr-FR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // 24-hour format
+        timeZone: 'GMT' // Force GMT timezone
+      });
     } catch (error) {
       console.error("Error formatting time:", error);
-      return ''; // Return a default or empty string in case of error
+      return ''; 
     }
   };
+  
   
 
   const handleSaveChanges = async () => {
@@ -394,42 +405,62 @@ export function Tables() {
       )}
 
       {/* Task List */}
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
+        <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
   <Card className="overflow-hidden xl:col-span-2 shadow-sm bg-[#ECEFF100]">
     <CardBody className="px-0 py-4 bg-[#ECEFF100]">
       {filteredTasks.map((task, index) => (
-      
         <div
           key={index}
-          className="flex items-center justify-between px-6 py-4 bg-white shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] rounded-lg pt-5 mt-5 border border-blue-900 border-t-0 border-l-4 border-r-0 border-b-0"
+          className="flex flex-col justify-between px-6 py-4 bg-white shadow-lg rounded-lg mt-4 border-l-4 border-blue-900"
         >
-          {/* Colonne de gauche pour le titre et la description */}
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-blue-gray-500">
-              {task.TSKOBJ} {/* Remplacez par le titre réel */}
+          {/* Row for title */}
+          <div className="flex justify-between items-center">
+            <span className="text-base font-bold text-[#183f7f]">
+              {task.TSKOBJ}
             </span>
-            <span className="text-grey-300"><i className="material-icons">Client</i> {/* Icône pour l'entreprise */}
-                <span>{task.NOMCLI}</span> {/* Remplacez par le nom de la société */} </span>
-            <div className="flex items-center gap-4 mt-2 text-gray-200">
-              <div className="flex items-center text-[#183f7f] gap-1">
-                   <span>de  {formatTime(task.HURDEB)}</span> {/* Icône pour l'entreprise */}
-                {/* Remplacez par le nom de la société */}
+            <div className="flex flex-col items-end gap-2">
+              {/* Actions */}
+              <div className="flex gap-4 text-black-500">
+                {renderActionIcons(task)}
               </div>
-              <div className="flex items-center text-[#183f7f] gap-1">
-              {/* Icône pour la date */}
-                <span>à {formatTime(task.HURFIN)}</span> {/* Remplacez par la date */}
-              </div>
+              {/* Button "Réalisé/À Faire" */}
+           
             </div>
           </div>
 
-          {/* Colonne de droite pour l'état et les actions */}
-          <div className="text-right">
-            <span className="text-black-200">{formatDate(task.DATDEB)}</span>
-            <div className="text-blue-400 font-semibold mt-2">{task.TSKSTA} </div>
-            <div className="flex gap-2 mt-4 text-right">
-              {renderActionIcons(task)} {/* Boutons d'action */}
-            </div>
+          {/* Row for client name */}
+          <div className="">
+  <span className="flex text-black text-[12px] gap-2 mt-1 mb-1 ">
+    <UserIcon className="w-4 h-4 mr-2 text-[#183f7f]" /> {/* Icône utilisateur */}
+    {task.NOMCLI}
+  </span>
+</div>
+          <div className="flex items-center gap-2">
+    
+    <span className="flex text-black text-[11px] gap-2 ">
+    <CalendarIcon className="w-4 h-4 mr-2 text-[#183f7f]" /> 
+      {formatDate(task.DATDEB)}</span>
+  </div>
+          {/* Row for time range */}
+          
+          {/* Row for date */}
+          <div className="flex items-center justify-between">
+  {/* Date section */}
+
+  <div className="flex items-center gap-2 text-[#183f7f] text-[11px]">
+  <ClockIcon className="w-4 h-4 mr-2 text-[#183f7f]" /> 
+            <span>De {formatTime(task.HURDEB)} à {formatTime(task.HURFIN)}</span>
           </div>
+
+  {/* Button aligned to the right */}
+  <button
+  className={`text-white  px-4 py-1 rounded-2xl ${
+    task.TSKSTA === 'Réalisé' ? 'bg-[#2e8b57]' : 'bg-[#183f7f]'
+  }`}
+>
+  {task.TSKSTA === 'Réalisé' ? 'Réalisé' : 'À Faire'}
+</button>
+</div>
         </div>
       ))}
     </CardBody>
