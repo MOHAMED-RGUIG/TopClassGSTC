@@ -179,7 +179,7 @@ export function Home() {
           vertical: 5
         }
       },
-      colors: ['#007f66', '#183f7f'], // Yellow for 'À Faire', Blue for 'Réalisées'
+      colors: ['#183f7f', '#007f66 '],// Yellow for 'À Faire', Blue for 'Réalisées'
       responsive: [{
         breakpoint: 480,
         options: {
@@ -212,7 +212,7 @@ export function Home() {
           shade: 'dark',
           type: 'vertical',
           shadeIntensity: 0.5,
-          gradientToColors: ['#007f66', '#183f7f'], // Gradient to match base colors
+          gradientToColors: ['#183f7f', '#007f66'], // Gradient to match base colors
           inverseColors: false,
           opacityFrom: 0.85,
           opacityTo: 0.85,
