@@ -378,34 +378,29 @@ export function Tables() {
       </div>
 
       {/* Filter Popup */}
-        {isFilterOpen && (
+            {isFilterOpen && (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
     <div className="bg-white p-6 shadow-lg w-11/12 md:w-1/2" style={{ borderRadius: "0" }}>
       <h3 className="text-lg font-bold mb-4 text-center">SELECTIONNER LES CHAMPS POUR FILTRER</h3>
-      <div className="grid grid-cols-2 gap-4" style={{ margin: "0 auto", marginLeft: "40px" }}>
-        {[
-          "Titre de la tache",
-          "Nom du client",
-          "Heure du début",
-          "Heure du fin",
-          "Date de la tache",
-        ].map((field, index) => (
-          <label key={index} className="flex items-center gap-2">
+      <div className="grid grid-cols-2 gap-4" style={{ margin: "0 auto",marginLeft:"40px"}}>
+        {Object.keys(selectedFields).map((field) => (
+          <label key={field} className="flex items-center gap-2">
             <input
               type="checkbox"
               checked={selectedFields[field]}
               onChange={() => handleFieldChange(field)}
+              
             />
-            <span style={{ boxShadow: "none", color: "#000", fontSize: "12px" }}>{field}</span>
+            <span style={{ boxShadow: "none", color: "#000",fontSize: "12px"}}>{field}</span>
           </label>
         ))}
       </div>
       <div
-        className="flex justify-between mt-6 w-1/2"
-        style={{
-          margin: "0 auto",
-        }}
-      >
+      className="flex justify-between mt-6 w-1/2"
+      style={{
+        margin: "0 auto",
+      }}
+    >
       {/* Button avec l'icône valider */}
       <button
         onClick={toggleFilterPopup}
