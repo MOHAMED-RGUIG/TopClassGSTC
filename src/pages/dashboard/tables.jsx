@@ -378,32 +378,55 @@ export function Tables() {
       </div>
 
       {/* Filter Popup */}
-      {isFilterOpen && (
+        {isFilterOpen && (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-              <div className="bg-white p-6 rounded-md shadow-lg w-1/2">
-            <h3 className="text-lg font-semibold mb-4">Sélectionner les champs pour filtrer</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.keys(selectedFields).map((field) => (
-                <label key={field} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={selectedFields[field]}
-                    onChange={() => handleFieldChange(field)}
-                  />
-                  {field}
-                </label>
-              ))}
-            </div>
-            <button
-              onClick={toggleFilterPopup}
-              className="mt-4 p-2 bg-[#183f7f] text-white rounded-md"
-            >
-             Appliquer le filtre
-            </button>
-          </div>
-        </div>
-      )}
+    <div className="bg-white p-6 shadow-lg w-11/12 md:w-1/2" style={{ borderRadius: "0" }}>
+      <h3 className="text-lg font-bold mb-4 text-center">SELECTIONNER LES CHAMPS POUR FILTRER</h3>
+      <div className="grid grid-cols-2 gap-4" style={{ margin: "0 auto",marginLeft:"40px"}}>
+        {Object.keys(selectedFields).map((field) => (
+          <label key={field} className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={selectedFields[field]}
+              onChange={() => handleFieldChange(field)}
+              
+            />
+            <span style={{ boxShadow: "none", color: "#000",fontSize: "12px"}}>{field}</span>
+          </label>
+        ))}
+      </div>
+      <div className="flex justify-between mt-6">
+        {/* Button Appliquer le filtre */}
+        <button
+          onClick={toggleFilterPopup}
+          className="p-2 bg-[#183f7f] text-white rounded-full"
+          style={{
+            letterSpacing: "1px",
+            fontSize: "12px",
+            marginLeft: "35px",
+            margin: "0 5px",
+          }}
+        >
+          Appliquer le filtre
+        </button>
 
+        {/* Button Fermer */}
+        <button
+          onClick={toggleFilterPopup}
+          className="p-2 bg-[#183f7f] text-white rounded-full"
+          style={{
+            letterSpacing: "1px",
+            fontSize: "12px",
+            marginLeft: "3px",
+            margin: "0 auto",
+          }}
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       {/* Task List */}
         <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-1 bg-[#ECEFF100]">
   <Card className="overflow-hidden xl:col-span-2 shadow-sm bg-[#ECEFF100]">
