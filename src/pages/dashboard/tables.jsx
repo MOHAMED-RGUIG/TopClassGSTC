@@ -14,7 +14,7 @@ import {
   Button,
   Option,
 } from "@material-tailwind/react";
-import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon ,UserIcon, CalendarIcon, ClockIcon} from "@heroicons/react/24/outline";
+import { EyeIcon, PencilIcon, TrashIcon,CheckCircleIcon, ClipboardIcon ,UserIcon, CalendarIcon, ClockIcon,CheckIcon, XMarkIcon} from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
 import axios from "axios";
 import Chart from "react-apexcharts";
@@ -395,35 +395,34 @@ export function Tables() {
           </label>
         ))}
       </div>
-      <div className="flex justify-between mt-6">
-        {/* Button Appliquer le filtre */}
-        <button
-          onClick={toggleFilterPopup}
-          className="p-2 bg-[#183f7f] text-white rounded-full"
-          style={{
-            letterSpacing: "1px",
-            fontSize: "12px",
-            marginLeft: "80px",
-            margin: "0 5px",
-          }}
-        >
-          Appliquer le filtre
-        </button>
+      <div
+      className="flex justify-between mt-6 w-1/2"
+      style={{
+        margin: "0 auto",
+      }}
+    >
+      {/* Button avec l'icône valider */}
+      <button
+        onClick={toggleFilterPopup}
+        className="p-3 bg-[#183f7f] text-white rounded-full mt-2 flex items-center justify-center"
+        style={{
+          margin: "17px 5px", }}>
+        <CheckIcon className="h-5 w-5 text-white" /> {/* Icône Heroicons Outline */}
+      </button>
 
-        {/* Button Fermer */}
-        <button
-          onClick={toggleFilterPopup}
-          className="p-2 bg-[#183f7f] text-white rounded-full"
-          style={{
-            letterSpacing: "1px",
-            fontSize: "12px",
-            marginLeft: "3px",
-            margin: "0 auto",
-          }}
-        >
-          Fermer
-        </button>
-      </div>
+      {/* Button avec l'icône fermer */}
+      <button
+        onClick={toggleFilterPopup}
+        className="p-3 bg-[#183f7f] text-white rounded-full flex items-center justify-center"
+        style={{
+          marginLeft: "3px",
+          margin: "17px auto",}}
+      >
+        <XMarkIcon className="h-5 w-5 text-white" style={{
+          fontSize: "8px"
+        }}/> {/* Icône Heroicons Outline */}
+      </button>
+    </div>
     </div>
   </div>
 )}
