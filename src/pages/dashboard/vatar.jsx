@@ -45,7 +45,7 @@ const Avatar = () => {
   {/* Deuxième ligne : ID et Téléphone */}
   <div className="flex justify-between w-1/2 mt-2 p-2 gap-x-5">
     <h3 className="" style={{paddingLeft:'20px'}}>{loggedInUser.ID}</h3>
-    <h3 className="" style={{paddingLeft:'20px'}}>{loggedInUser.TELEP}</h3>
+    <h3 className="" >{loggedInUser.TELEP}</h3>
   </div>
 </div>
 
