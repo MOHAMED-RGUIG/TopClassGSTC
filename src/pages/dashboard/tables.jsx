@@ -403,7 +403,7 @@ export function Tables() {
           style={{
             letterSpacing: "1px",
             fontSize: "12px",
-            marginLeft: "50px",
+            marginLeft: "80px",
             margin: "0 5px",
           }}
         >
