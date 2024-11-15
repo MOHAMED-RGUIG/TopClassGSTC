@@ -375,8 +375,9 @@ export function Tables() {
           placeholder="Search..."
           className="p-2 w-full outline-none focus:ring-0"
         />
-        <button
-          onClick={toggleFilterPopup}
+         <button
+          onClick={toggleFilterPopup}  style={{
+            margin: "17px 5px" }}
           className="p-2 bg-[#183f7f] text-white rounded-md"
         >
              <FaFilter className="text-lg pt-1" /> {/* Font Awesome filter icon */}
