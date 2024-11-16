@@ -520,13 +520,12 @@ export function Tables() {
           </DialogFooter>
         </Dialog>
       )}
-
-      {/* View Dialog */}
+ {/* View Dialog */}
       <Dialog open={openViewDialog} onClose={() => setOpenViewDialog(false)} animate={{ mount: { scale: 1, opacity: 1 }, unmount: { scale: 0.9, opacity: 0 } }}>
-        <DialogHeader>Détaile de la tâche</DialogHeader>
+        <DialogHeader className="text-[#183f7f]">Détaile de la tâche</DialogHeader>
         <DialogBody divider style={{ overflowY: 'auto', maxHeight: '300px', padding: '10px' }}>
           {selectedTask ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' ,boxShadow:'0'}}>
               {[
                 { label: 'Type de Tâche', value: selectedTask.TSKTYP },
                 { label: 'Action de la Tâche', value: selectedTask.TSKACT },
@@ -544,9 +543,9 @@ export function Tables() {
                 { label: 'Compte Rendu', value: selectedTask.TSKCMR },
                 { label: 'Statut', value: selectedTask.TSKSTA }
               ].map((item, index) => (
-                <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0px 2px 5px rgba(0,0,0,0.1)', padding: '8px', borderRadius: '8px' }}>
+                <div key={index} style={{ display: 'flex',color:'black', fontSize:'14px',alignItems: 'center', padding: '8px', borderRadius: '8px' }}>
                   <Typography variant="small">{item.label}:</Typography>
-                  <span style={{ maxWidth: '65%', overflowWrap: 'break-word' }}>{item.value}</span>
+                  <span style={{ maxWidth: '65%', overflowWrap: 'break-word', paddingLeft:'10px' }} >{item.value}</span>
                 </div>
               ))}
             </div>
@@ -555,7 +554,7 @@ export function Tables() {
           )}
         </DialogBody>
         <DialogFooter>
-          <Button variant="gradient" color="blue" onClick={() => setOpenViewDialog(false)}>
+          <Button  className='bg-[#183f7f]' onClick={() => setOpenViewDialog(false)}>
             Fermer
           </Button>
         </DialogFooter>
@@ -586,7 +585,7 @@ export function Tables() {
               <Input type="date" label="Date de Début" name="DATDEB" value={selectedTask.DATDEB} onChange={handleChange} className="tc-text-input" />
               <Input type="time" label="Heure de Début" name="HURDEB" value={selectedTask.HURDEB} onChange={handleChange} className="tc-text-input" />
               <Input type="time" label="Heure de Fin" name="HURFIN" value={selectedTask.HURFIN} onChange={handleChange} className="tc-text-input" />
-              <Input label="Code Client" name="CLI" value={selectedTask.CLI} onChange={handleChange} className="tc-text-input" />
+              <Input label="Code Client" name="CLI" value={selectedTask.CLI} onChange={handleChange} className="tc-text-input text-left" />
               <Input label="Nom de Client" name="NOMCLI" value={selectedTask.NOMCLI} onChange={handleChange} className="tc-text-input" />
               <Select label="Catégorie" name="CATCLI" value={selectedTask.CATCLI} onChange={(value) => handleChange({ name: 'CATCLI', value })} className="tc-text-input">
                 <Option value="Categorie 1">Categorie 1</Option>
@@ -608,7 +607,7 @@ export function Tables() {
                 <Option value="Intervenant de site">Intervenant de site</Option>
               </Select>
               <Input label="Téléphone" name="TELCNT" value={selectedTask.TELCNT} onChange={handleChange} className="tc-text-input" />
-              <Input label="Objet de la Tâche" name="TSKOBJ" value={selectedTask.TSKOBJ} onChange={handleChange} className="tc-text-input" />
+              <Input label="Objet de la Tâche" name="TSKOBJ" value={selectedTask.TSKOBJ} onChange={handleChange} className="tc-text-input text-left" />
               <Textarea label="Compte Rendu" name="TSKCMR" value={selectedTask.TSKCMR} onChange={handleChange} className="tc-text-input" />
               <Select label="Statut" name="TSKSTA" value={selectedTask.TSKSTA} onChange={(value) => handleChange({ name: 'TSKSTA', value })} className="tc-text-input">
                 <Option value="Réalisé">Réalisé</Option>
@@ -617,9 +616,9 @@ export function Tables() {
             </form>
           )}
         </DialogBody>
-        <DialogFooter>
-          <Button variant="gradient" color="blue" onClick={handleSaveChanges}>Save</Button>
-          <Button variant="text" onClick={() => setOpenEditDialog(false)}>Cancel</Button>
+        <DialogFooter className="gap-1">
+          <Button className='bg-[#183f7f] ' onClick={handleSaveChanges}>Save</Button>
+          <Button className='bg-[#183f7f] ' onClick={() => setOpenEditDialog(false)}>Cancel</Button>
         </DialogFooter>
       </Dialog>
 
