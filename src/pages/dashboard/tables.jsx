@@ -441,6 +441,9 @@ export function Tables() {
       {filteredTasks.map((task, index) => (
         <div
           key={index}
+                    style={{ '--tw-shadow': '0 1px 1px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            boxShadow: 'var(--tw-shadow)',borderRadius:'0px'}}
+
           className="flex flex-col justify-between px-6 py-4 bg-white shadow-lg rounded-lg mt-4 border-l-4 border-blue-900"
         >
           {/* Row for title */}
