@@ -563,7 +563,7 @@ export function Tables() {
 
       {/* Edit Dialog */}
       <Dialog open={openEditDialog} onClose={() => setOpenEditDialog(false)}>
-        <DialogHeader>Modifier la tâche</DialogHeader>
+        <DialogHeader className="text-[#183f7f]" >Modifier la tâche</DialogHeader>
         <DialogBody divider style={{ overflowY: 'scroll', maxHeight: '300px' }}>
           {selectedTask && (
             <form className="flex flex-col gap-4">
