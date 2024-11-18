@@ -414,7 +414,7 @@ export function Tables() {
         onClick={toggleFilterPopup}
         className="p-3 bg-[#183f7f] text-white rounded-full mt-2 flex items-center justify-center"
         style={{
-          margin: "17px 5px", }}>
+          margin: "40px 5px", }}>
         <CheckIcon className="h-5 w-5 text-white" /> {/* Icône Heroicons Outline */}
       </button>
 
