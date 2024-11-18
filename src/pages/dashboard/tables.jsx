@@ -406,6 +406,7 @@ export function Tables() {
       <div
         className="flex justify-between mt-6 w-1/2"
         style={{
+          marginLeft:"20px",
           margin: "0 auto",
         }}
       >
