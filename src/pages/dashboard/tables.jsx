@@ -407,7 +407,7 @@ export function Tables() {
         className="flex justify-between mt-6 w-1/2"
         style={{
           marginLeft:"50px",
-          margin: "0 auto",
+          margin: "0 85px",
         }}
       >
       {/* Button avec l'icône valider */}
